@@ -1,0 +1,26 @@
+{% extends 'hospitals/base.html' %}
+{% block title %} Hospital Management System {% endblock %}
+{% block body %}
+<div class="form-wrap">
+    <h1 class = "title">Hospital Management System</h1>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% for hf in hospitalForm %}
+        <div>
+            <div class = "label-name">
+                {{hf.label_tag}}
+            </div>
+            <div class="input-field">
+                {{hf}}
+            </div>
+            <div class="error-name">
+                {{hf.errors|striptags}}
+            </div>
+        </div>
+        {% endfor %}
+        <div class = "submit-button">
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

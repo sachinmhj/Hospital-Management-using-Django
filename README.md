@@ -4,7 +4,6 @@
 Before running the project, ensure you have the following prerequisites installed:
 - Python 3.11 or higher
 - Django 4.2
-- Other dependencies listed in requirements.txt
 
 ## Installation
 To set up the Hospital Management System on your local machine, follow these steps:
@@ -16,4 +15,4 @@ To set up the Hospital Management System on your local machine, follow these ste
 2. Navigate to the project directory
 3. Create a virtual environment
 4. Activate the virtual environment
-5. Install dependencies
+5. Install dependencies from the requirements.txt

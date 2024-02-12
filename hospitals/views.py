@@ -5,6 +5,7 @@ from .models import HospitalRecord
 
 # Create your views here.
 def home(request):
+    allRecords = HospitalRecord.objects.all()
     if request.method == "POST":
         hospital_form = HospitalDetailsForm(request.POST)
         if hospital_form.is_valid():
@@ -20,7 +21,7 @@ def home(request):
             return HttpResponseRedirect('/success/')
     else:
         hospital_form = HospitalDetailsForm()
-    return render(request,'hospitals/home.html',{'hospitalForm':hospital_form})
+    return render(request,'hospitals/home.html',{'hospitalForm':hospital_form,'records':allRecords})
 
 def success(request):
     return render(request,'hospitals/success.html')

@@ -4,6 +4,9 @@
 Before running the project, ensure you have the following prerequisites installed:
 - Python 3.11 or higher
 - Django 4.2
+- Gunicorn 21.2.0
+- Whitenoise 6.6.0
+- Other dependencies listed in requirements.txt
 
 ## Installation
 To set up the Hospital Management System on your local machine, follow these steps:

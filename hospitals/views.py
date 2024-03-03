@@ -32,8 +32,8 @@ def allrecords(request):
 
 class DeleteConfirm(DeleteView):
     model = HospitalRecord
-    template_name = 'hospitals/deletesuccess.html'
+    template_name = 'hospitals/deleteconfirm.html'
     success_url = '/records/'
-    
+
 def success(request):
     return render(request,'hospitals/success.html')

@@ -5,8 +5,8 @@
     <h1 class = "text-center my-4">Are you sure?</h1>
     <form action="" method="post" class="text-center">
         {% csrf_token %}
-        <button type="submit" class="btn btn-secondary" style="width: 10%;">Yes</button>
+        <button type="submit" class="btn btn-secondary">Yes</button>
     </form>
-    <a href="{% url 'records' %}" class="btn btn-secondary btn-sm mx-auto my-2" style="width: 10%;" role="button">No</a>
+    <a href="{% url 'records' %}" class="btn btn-secondary btn-sm mx-auto my-2" role="button">Cancel</a>
 </div>
 {% endblock %}

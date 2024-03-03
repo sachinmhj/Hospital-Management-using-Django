@@ -1,8 +1,8 @@
 {% extends 'hospitals/base.html' %}
-{% block title %} Hospital Management System - Success {% endblock %}
+{% block title %} Success {% endblock %}
 {% block body %}
-<h1 class = "message">Your information has been successfully stored</h1>
-<div class = "link">
-    <a href="{% url 'home' %}">Home</a>
+<div class="d-flex flex-column justify-content-center">
+    <h1 class = "text-center my-4">Saved Successfully</h1>
+    <a href="{% url 'home' %}" class="btn btn-secondary btn-sm mx-auto" style="width: 10%;" role="button">Back</a>
 </div>
 {% endblock %}

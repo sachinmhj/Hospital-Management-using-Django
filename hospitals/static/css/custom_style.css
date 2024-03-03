@@ -1,0 +1,27 @@
+#id_website, #id_name, #id_address, #id_phone_number, #id_email, #id_capacity{
+    text-align: center;
+    background-color: white;
+}
+
+li .nav-link{
+    color: rgb(96 254 255);
+    
+}
+li .nav-link:hover{
+    color: rgb(96 254 255);
+    background-color:rgb(72 70 70);
+}
+
+.ct-label{
+    margin: 0.6rem;
+}
+
+hr{
+    color: white;
+    margin: 0.5rem;
+}
+
+body{
+    font-family:monospace, Arial, Helvetica, sans-serif;
+    background-color: white;
+}

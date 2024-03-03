@@ -1,9 +1,11 @@
 from django import forms
+from .models import HospitalRecord
 
-class HospitalDetailsForm(forms.Form):
-    name = forms.CharField(label_suffix=" ")
-    address = forms.CharField(label_suffix=" ")
-    phone_number = forms.CharField(label_suffix=" ")
-    email = forms.EmailField(label_suffix=" ")
-    website = forms.URLField(required=False, label_suffix=" ", widget=forms.URLInput(attrs={'placeholder':'Optional'}))
-    capacity = forms.IntegerField(label_suffix=" ")
+class HospitalDetailsForm(forms.ModelForm):
+    website = forms.URLField(required=False, widget=forms.URLInput(attrs={'placeholder':'Optional'}))
+    def __init__(self, *args, **kwargs):
+        super(HospitalDetailsForm, self).__init__(*args, **kwargs)
+        self.label_suffix = '' 
+    class Meta:
+        model = HospitalRecord
+        fields = '__all__'

@@ -1,0 +1,43 @@
+{% extends 'hospitals/base.html' %}
+{% block title %} Hospital Records {% endblock %}
+{% block body %}
+<div class="container my-4">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">S.N</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Website</th>
+                    <th scope="col">Capacity</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rec in records %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{rec.name}}</td>
+                    <td>{{rec.address}}</td>
+                    <td>{{rec.phone_number}}</td>
+                    <td>{{rec.email}}</td>
+                    <td>{{rec.website}}</td>
+                    <td>{{rec.capacity}}</td>
+                    <td class="d-flex">
+                        <a href="/update/{{rec.id}}/" class="btn btn-outline-secondary btn-sm mx-2"
+                            role="button">Update</a>
+                        <form action="/delete/{{rec.id}}/" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-secondary btn-sm mx-2">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

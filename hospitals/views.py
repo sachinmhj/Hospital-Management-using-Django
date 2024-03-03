@@ -2,26 +2,38 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import HospitalDetailsForm
 from .models import HospitalRecord
+from django.views.generic import DeleteView
 
-# Create your views here.
 def home(request):
-    allRecords = HospitalRecord.objects.all()
     if request.method == "POST":
         hospital_form = HospitalDetailsForm(request.POST)
         if hospital_form.is_valid():
-            cleanedData = hospital_form.cleaned_data
-            name = cleanedData['name']
-            address = cleanedData['address']
-            phone = cleanedData['phone_number']
-            email = cleanedData['email']
-            website = cleanedData['website']
-            capacity = cleanedData['capacity']
-            saveData = HospitalRecord(name=name,address=address,phone_number=phone,email=email,website=website,capacity=capacity)
-            saveData.save()
+            hospital_form.save()
             return HttpResponseRedirect('/success/')
     else:
         hospital_form = HospitalDetailsForm()
-    return render(request,'hospitals/home.html',{'hospitalForm':hospital_form,'records':allRecords})
+    return render(request,'hospitals/home.html',{'hospitalForm':hospital_form})
 
+def update(request, iden):
+    user = HospitalRecord.objects.get(id = iden)
+    hospital_form = HospitalDetailsForm(instance = user)
+    if request.method == 'POST':
+        hospital_form = HospitalDetailsForm(request.POST, instance = user)
+        if hospital_form.is_valid():
+            hospital_form.save()
+        return HttpResponseRedirect('/success/')
+    else:
+        hospital_form = HospitalDetailsForm(instance = user)
+        return render(request,'hospitals/update.html',{'hospitalform':hospital_form})
+    
+def allrecords(request):
+    allRecords = HospitalRecord.objects.all()
+    return render(request,'hospitals/hospital_list.html',{'records':allRecords})
+
+class DeleteConfirm(DeleteView):
+    model = HospitalRecord
+    template_name = 'hospitals/deletesuccess.html'
+    success_url = '/records/'
+    
 def success(request):
     return render(request,'hospitals/success.html')

@@ -1,27 +1,27 @@
 {% extends 'hospitals/base.html' %}
-{% block title %} Hospital Management System {% endblock %}
+{% block title %} Update Hospital {% endblock %}
 {% block body %}
 <div class="container">
-    <h2 class = "text-center mt-4 p-2">Add Hospital</h2>
+    <h2 class="text-center mt-4 p-2">Update Hospital</h2>
     <form action="" method="post" novalidate>
         {% csrf_token %}
         <div class="text-center mt-2">
-        {% for hf in hospitalForm %}
+            {% for form in hospitalform %}
             <div class="ct-label">
-                {{hf.label_tag}}
+                {{form.label_tag}}
             </div>
             <div>
-                {{hf}}
+                {{form}}
             </div>
-            {% if hf.errors %}
+            {% if form.errors %}
             <div>
-                {{hf.errors|striptags}}
+                {{form.errors|striptags}}
             </div>
             {% endif %}
             {% endfor %}
         </div>
-        <div class = "text-center my-4">
-            <button type="submit" class="btn btn-secondary">Save</button>
+        <div class="text-center my-4">
+            <button type="submit" class="btn btn-secondary">Update</button>
         </div>
     </form>
 </div>

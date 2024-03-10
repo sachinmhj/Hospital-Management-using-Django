@@ -1,8 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.http import HttpResponseRedirect
 from .forms import HospitalDetailsForm
 from .models import HospitalRecord
 from django.views.generic import DeleteView
+
+from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from .serializers import HospitalSerializer
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 def home(request):
     if request.method == "POST":
@@ -37,3 +43,15 @@ class DeleteConfirm(DeleteView):
 
 def success(request):
     return render(request,'hospitals/success.html')
+
+# for API
+class Api(ListCreateAPIView):
+    queryset = HospitalRecord.objects.all()
+    serializer_class = HospitalSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
+class RetrieveUpdateDel(RetrieveUpdateDestroyAPIView):
+    queryset = HospitalRecord.objects.all()
+    serializer_class = HospitalSerializer
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]

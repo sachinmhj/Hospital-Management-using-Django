@@ -27,9 +27,9 @@
                     <td>{{rec.website}}</td>
                     <td>{{rec.capacity}}</td>
                     <td class="d-flex">
-                        <a href="/update/{{rec.id}}/" class="btn btn-outline-secondary btn-sm mx-2"
+                        <a href="/update/{{rec.id}}/" class="btn btn-outline-dark text-light btn-sm mx-2"
                             role="button">Update</a>
-                        <a href="/delete/{{rec.id}}/" class="btn btn-outline-secondary btn-sm mx-2"
+                        <a href="/delete/{{rec.id}}/" class="btn btn-outline-dark text-light btn-sm mx-2"
                             role="button">Delete</a>
                     </td>
                 </tr>
@@ -38,7 +38,7 @@
         </table>
     </div>
     <div class="text-center">
-        <a href="{% url 'home' %}" class="btn btn-secondary my-4" role="button">Back</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary my-4 bg-dark" role="button">Back</a>
     </div>
 </div>
 {% endblock %}
